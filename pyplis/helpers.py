@@ -21,7 +21,7 @@ import matplotlib.colors as colors
 from datetime import datetime, time, date, timedelta
 
 from matplotlib.pyplot import draw
-from numpy import (mod, linspace, hstack, vectorize, uint8, asarray,
+from numpy import (mod, linspace, hstack, vectorize, uint8, cast, asarray,
                    log2, unravel_index, nanargmax, meshgrid, floor, log10,
                    isnan, argmin, sum, zeros, float32, ogrid)
 from scipy.ndimage import gaussian_filter
@@ -570,7 +570,7 @@ def bytescale(data, cmin=None, cmax=None, high=255, low=0):
     bytedata = (data * 1.0 - cmin) * scale + 0.4999
     bytedata[bytedata > high] = high
     bytedata[bytedata < 0] = 0
-    return bytedata.astype(uint8) + uint8(low)
+    return cast[uint8](bytedata) + cast[uint8](low)
 
 
 if __name__ == "__main__":
