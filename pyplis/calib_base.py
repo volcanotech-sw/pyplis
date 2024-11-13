@@ -170,7 +170,7 @@ class CalibData(object):
 
     def num_optargs_fun(self, fun):
         """Return number of optimisation args of a function."""
-        return len(signature(fun).args) - 1
+        return len(signature(fun).parameters) - 1
 
     @property
     def senscorr_mask(self):
@@ -230,7 +230,7 @@ class CalibData(object):
     def calib_fun(self, val):
         if not callable(val):
             raise ValueError("Need a callable object (e.g. lambda function)")
-        args = signature(val).args
+        args = signature(val).parameters
         logger.info("Setting optimisation function in CalibData class. "
                     "Argspec: %s" % args)
         self._calib_fun = val
