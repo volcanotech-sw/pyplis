@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import logging
 from os.path import abspath, dirname
-from pkg_resources import get_distribution
+from importlib.metadata import version
 from matplotlib import rcParams
 
 
 def _init_supplemental():
     rcParams["mathtext.default"] = u"regular"
 
-    return (get_distribution('pyplis').version, abspath(dirname(__file__)))
+    return (version('pyplis'), abspath(dirname(__file__)))
 
 
 def _init_logger():
