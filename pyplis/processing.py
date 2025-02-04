@@ -188,7 +188,7 @@ class ImgStack(object):
     def time_stamps(self):
         """Acq. time stamps of all images."""
         try:
-            dts = ([timedelta(x / (2 * 86400.)) for x in self.texps])
+            dts = ([timedelta(int(x / (2 * 86400.))) for x in self.texps])
             return self.start_acq + asarray(dts)
         except BaseException:
             raise ValueError("Failed to access information about acquisition "
